@@ -5,17 +5,22 @@ import java.util.Arrays;
 public abstract class Phone {
     private int memory;
 
+    private final Phone nextPhone;
+    private final Phone prevPhone;
+
     private int megapixels;
 
     private double screenSize;
 
     private String[] features;
 
-    public Phone(int memory, int megapixels, double screenSize, String[] features) {
+    public Phone(Phone nextPhone, Phone prevPhone, int memory, int megapixels, double screenSize, String[] features) {
         this.memory = memory;
         this.megapixels = megapixels;
         this.screenSize = screenSize;
         this.features = features;
+        this.nextPhone = nextPhone;
+        this.prevPhone = prevPhone;
     }
 
     public int getMemory() {
@@ -28,6 +33,10 @@ public abstract class Phone {
 
     public double getScreenSize() {
         return screenSize;
+    }
+
+    public Phone getNextPhone() {
+        return nextPhone;
     }
 
     public String[] getFeatures() {
