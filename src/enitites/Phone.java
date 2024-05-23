@@ -3,16 +3,16 @@ package enitites;
 import java.util.Arrays;
 
 public abstract class Phone {
-    private int memory;
+    private final int memory;
 
     private Phone nextPhone;
     private Phone prevPhone;
 
-    private int megapixels;
+    private final int megapixels;
 
-    private double screenSize;
+    private final double screenSize;
 
-    private String[] features;
+    private final String[] features;
 
     public Phone(int memory, int megapixels, double screenSize, String[] features) {
         this.memory = memory;
@@ -38,10 +38,13 @@ public abstract class Phone {
         return nextPhone;
     }
 
+    public Phone getPrevPhone() {
+        return prevPhone;
+    }
+
     public String[] getFeatures() {
         return features;
     }
-
 
 
     @Override
