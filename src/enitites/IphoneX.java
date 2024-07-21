@@ -5,7 +5,7 @@ public class IphoneX extends Phone {
 
     public IphoneX() {
         super(256, 15, 5.8, new String[]{
-                "1 зарплата",
+                "> 1 зарплата",
                 "проц+",
                 "нет кнопочки",
                 "фейс айди",

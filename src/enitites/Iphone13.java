@@ -1,20 +1,19 @@
 package enitites;
 
-public class Iphone12 extends Phone {
-    private static final Iphone11 prevPhone = new Iphone11();
-    private static final Iphone13 nextPhone = new Iphone13();
+public class Iphone13 extends Phone {
+    private static final Iphone12 prevPhone = new Iphone12();
+    private static final Iphone14 nextPhone = new Iphone14();
 
-    public Iphone12() {
+    public Iphone13() {
         super(512, 21, 6.1, new String[]{
                 "1 зарплата",
                 "проц++",
                 "нет кнопочки",
                 "фейс айди",
                 "монобровь",
-                "дохуя камер+",
-                "фишечка2"});
+                "дохуя камер++",
+                "фишечка3"});
     }
-
     @Override
     public Phone getNextPhone() {
         return nextPhone;
