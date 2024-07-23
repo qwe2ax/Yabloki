@@ -6,15 +6,20 @@ public class Iphone15 extends Phone {
         super(512, 21, 6.1, new String[]{
                 "2 зарплаты",
                 "проц+++",
-                "нет кнопочки",
+                "ОЗУ 8ГБ",
                 "фейс айди",
                 "монобровь--",
-                "дохуя камер++",
-                "фишечка3"});
+                "Основная: 48 МП",
+                "USB-C"});
     }
 
     @Override
     public Phone getPrevPhone() {
         return prevPhone;
+    }
+
+    @Override
+    public Phone getNextPhone() {
+        return null;
     }
 }
