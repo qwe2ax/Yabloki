@@ -1,7 +1,7 @@
 package enitites;
 
 public class Iphone11 extends Phone {
-    private static final IphoneX prevPhone = new IphoneX();
+    private static final Iphone10 prevPhone = new Iphone10();
     private final static Iphone12 nextPhone = new Iphone12();
 
     public Iphone11() {

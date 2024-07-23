@@ -72,21 +72,21 @@ public class ComparePhones {
         }
         while (phone1 != null) {
             String[] featuresOfNextPhone = phone1.getFeatures();
+            for (StringBuilder stringBuilder : result) {
+                stringBuilder.setLength(0);
+            }
             for (int i = 0; i < featuresOfCurrentPhone.length; i++) {
                 if (!featuresOfCurrentPhone[i].equals(featuresOfNextPhone[i])) {
                     result[i].append(phone.getClass().getName()).append(": ").append(featuresOfCurrentPhone[i]).append(" ")
-                            .append(phone1.getClass().getName()).append(": ").append(featuresOfNextPhone[i]).append("\n");
+                            .append(phone1.getClass().getName()).append(": ").append(featuresOfNextPhone[i]);
                 } else {
-                    result[i].append(featuresOfNextPhone[i]).append("\n");
+                    result[i].append(featuresOfNextPhone[i]);
                 }
 //                if (phone1.getNextPhone().getNextPhone() == null) {
 //                    return result;
 //                }
             }
-            System.out.println(Arrays.toString(result));
-            for (StringBuilder stringBuilder : result) {
-                stringBuilder.setLength(0);
-            }
+//            System.out.println(Arrays.toString(result));
             phone1 = phone1.getNextPhone();
         }
 
