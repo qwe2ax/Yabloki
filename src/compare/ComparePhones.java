@@ -83,17 +83,37 @@ public class ComparePhones {
                 } else {
                     result[i].append(featuresOfNextPhone[i]);
                 }
-//                if (phone1.getNextPhone().getNextPhone() == null) {
-//                    return result;
-//                }
             }
-//            System.out.println(Arrays.toString(result));
             phone1 = phone1.getNextPhone();
         }
-
         return result;
+    }
 
-
+    public StringBuilder[] getDiffWithPhone(Phone phone, Phone idk) {
+        Phone phone1 = phone.getNextPhone();
+        String[] featuresOfCurrentPhone = phone.getFeatures();
+        StringBuilder[] result = new StringBuilder[featuresOfCurrentPhone.length];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = new StringBuilder();
+        }
+        while (!phone1.getClass().equals(idk.getClass())) {
+            phone1 = phone1.getNextPhone();
+            String[] featuresOfNextPhone = phone1.getFeatures();
+            for (StringBuilder stringBuilder : result) {
+                stringBuilder.setLength(0);
+            }
+            for (int i = 0; i < featuresOfCurrentPhone.length; i++) {
+                String classNameCurrent = String.valueOf((phone.getClass().getName()).substring(9));
+                String classNameNext = String.valueOf((phone1.getClass().getName()).substring(9));
+                if (!featuresOfCurrentPhone[i].equals(featuresOfNextPhone[i])) {
+                    result[i].append(classNameCurrent).append(": ").append(featuresOfCurrentPhone[i]).append(" ")
+                            .append(classNameNext).append(": ").append(featuresOfNextPhone[i]);
+                } else {
+                    result[i].append(featuresOfNextPhone[i]);
+                }
+            }
+        }
+        return result;
     }
 
 }
