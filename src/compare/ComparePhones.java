@@ -2,7 +2,6 @@ package compare;
 
 import enitites.Phone;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class ComparePhones {
@@ -63,7 +62,7 @@ public class ComparePhones {
         return difference;
     }
 
-    public StringBuilder[] getDiffWithNextPhone(Phone phone) {
+    public StringBuilder[] getDiffWithIphone15(Phone phone) {
         Phone phone1 = phone.getNextPhone();
         String[] featuresOfCurrentPhone = phone.getFeatures();
         StringBuilder[] result = new StringBuilder[featuresOfCurrentPhone.length];
@@ -76,9 +75,11 @@ public class ComparePhones {
                 stringBuilder.setLength(0);
             }
             for (int i = 0; i < featuresOfCurrentPhone.length; i++) {
+                String classNameCurrent = String.valueOf((phone.getClass().getName()).substring(9));
+                String classNameNext = String.valueOf((phone1.getClass().getName()).substring(9));
                 if (!featuresOfCurrentPhone[i].equals(featuresOfNextPhone[i])) {
-                    result[i].append(phone.getClass().getName()).append(": ").append(featuresOfCurrentPhone[i]).append(" ")
-                            .append(phone1.getClass().getName()).append(": ").append(featuresOfNextPhone[i]);
+                    result[i].append(classNameCurrent).append(": ").append(featuresOfCurrentPhone[i]).append(" ")
+                            .append(classNameNext).append(": ").append(featuresOfNextPhone[i]);
                 } else {
                     result[i].append(featuresOfNextPhone[i]);
                 }

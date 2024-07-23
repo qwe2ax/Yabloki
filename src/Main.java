@@ -11,6 +11,6 @@ public class Main {
         ComparePhones comparePhones = new ComparePhones();
         Iphone15 iphone15 = new Iphone15();
         Iphone14 iphone14 = new Iphone14();
-        System.out.println(Arrays.toString(comparePhones.getDiffWithNextPhone(iphone10)));
+        System.out.println(Arrays.toString(comparePhones.getDiffWithIphone15(iphone10)));
     }
 }
