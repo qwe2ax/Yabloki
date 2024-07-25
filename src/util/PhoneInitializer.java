@@ -18,7 +18,6 @@ public class PhoneInitializer {
         Phone iphone14 = new Phone("iPhone 14", featuresIphone14);
         Phone iphone15 = new Phone("iPhone 15", featuresIphone15);
 
-        // Установка связей между телефонами
         iphone10.setNextPhone(iphone11);
         iphone11.setPrevPhone(iphone10);
         iphone11.setNextPhone(iphone12);
