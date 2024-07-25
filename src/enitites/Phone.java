@@ -2,37 +2,26 @@ package enitites;
 
 import java.util.Arrays;
 
-public abstract class Phone {
-    private final int memory;
-
+public  class Phone {
+    private String model;
     private Phone nextPhone;
     private Phone prevPhone;
-
-    private final int megapixels;
-
-    private final double screenSize;
-
     private final String[] features;
 
-    public Phone(int memory, int megapixels, double screenSize, String[] features) {
-        this.memory = memory;
-        this.megapixels = megapixels;
-        this.screenSize = screenSize;
+    public Phone(String model, String[] features) {
+        this.model = model;
         this.features = features;
-
     }
 
-    public int getMemory() {
-        return memory;
+    public void setNextPhone(Phone nextPhone) {
+        this.nextPhone = nextPhone;
     }
 
-    public int getMegapixels() {
-        return megapixels;
+    public void setPrevPhone(Phone prevPhone) {
+        this.prevPhone = prevPhone;
     }
 
-    public double getScreenSize() {
-        return screenSize;
-    }
+    public String getModel() { return model; }
 
     public Phone getNextPhone() {
         return nextPhone;
@@ -49,11 +38,6 @@ public abstract class Phone {
 
     @Override
     public String toString() {
-        return "Phone{" +
-                "memory=" + memory +
-                ", megapixels=" + megapixels +
-                ", screenSize=" + screenSize +
-                ", features=" + Arrays.toString(features) +
-                '}';
+        return "Model: " + model + ", Features: " + String.join(", ", features);
     }
 }

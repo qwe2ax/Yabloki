@@ -2,6 +2,7 @@ package compare;
 
 import enitites.Phone;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class ComparePhones {
@@ -62,58 +63,59 @@ public class ComparePhones {
         return difference;
     }
 
-    public StringBuilder[] getDiffWithIphone15(Phone phone) {
+    public void getDiffWithIphone15(Phone phone) {
         Phone phone1 = phone.getNextPhone();
         String[] featuresOfCurrentPhone = phone.getFeatures();
         StringBuilder[] result = new StringBuilder[featuresOfCurrentPhone.length];
         for (int i = 0; i < result.length; i++) {
             result[i] = new StringBuilder();
         }
+        int j = 0;
         while (phone1 != null) {
             String[] featuresOfNextPhone = phone1.getFeatures();
-            for (StringBuilder stringBuilder : result) {
-                stringBuilder.setLength(0);
-            }
+            result[j].append("New changes in ").append(phone1.getModel()).append(":\n");
+
             for (int i = 0; i < featuresOfCurrentPhone.length; i++) {
-                String classNameCurrent = String.valueOf((phone.getClass().getName()).substring(9));
-                String classNameNext = String.valueOf((phone1.getClass().getName()).substring(9));
                 if (!featuresOfCurrentPhone[i].equals(featuresOfNextPhone[i])) {
-                    result[i].append(classNameCurrent).append(": ").append(featuresOfCurrentPhone[i]).append(" ")
-                            .append(classNameNext).append(": ").append(featuresOfNextPhone[i]);
-                } else {
-                    result[i].append(featuresOfNextPhone[i]);
+                    result[j].append("- ").append(featuresOfNextPhone[i]).append(i == 6 ? "" : "\n");
                 }
             }
+            j++;
             phone1 = phone1.getNextPhone();
         }
-        return result;
+        for (int i = 0; i < 5; i++) {
+            System.out.println(result[i]);
+        }
     }
 
-    public StringBuilder[] getDiffWithPhone(Phone phone, Phone idk) {
+
+    public void getDiffWithPhone(Phone phone, Phone comprasionPhone) {
         Phone phone1 = phone.getNextPhone();
         String[] featuresOfCurrentPhone = phone.getFeatures();
         StringBuilder[] result = new StringBuilder[featuresOfCurrentPhone.length];
+        int j = 0;
+
         for (int i = 0; i < result.length; i++) {
             result[i] = new StringBuilder();
         }
-        while (!phone1.getClass().equals(idk.getClass())) {
-            phone1 = phone1.getNextPhone();
+
+        while (!phone1.getModel().equals(comprasionPhone.getModel())) {
             String[] featuresOfNextPhone = phone1.getFeatures();
-            for (StringBuilder stringBuilder : result) {
-                stringBuilder.setLength(0);
-            }
+            result[j].append("New changes in ").append(phone1.getModel()).append(":\n");
+
             for (int i = 0; i < featuresOfCurrentPhone.length; i++) {
-                String classNameCurrent = String.valueOf((phone.getClass().getName()).substring(9));
-                String classNameNext = String.valueOf((phone1.getClass().getName()).substring(9));
                 if (!featuresOfCurrentPhone[i].equals(featuresOfNextPhone[i])) {
-                    result[i].append(classNameCurrent).append(": ").append(featuresOfCurrentPhone[i]).append(" ")
-                            .append(classNameNext).append(": ").append(featuresOfNextPhone[i]);
-                } else {
-                    result[i].append(featuresOfNextPhone[i]);
+                    result[j].append("- ").append(featuresOfNextPhone[i]).append(i == 6 ? "" : "\n");
                 }
             }
+
+            j++;
+            phone1 = phone1.getNextPhone();
         }
-        return result;
+
+        for (int i = 0; i < 5; i++) {
+            System.out.println(result[i]);
+        }
     }
 
 }
