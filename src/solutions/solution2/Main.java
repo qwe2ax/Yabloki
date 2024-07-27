@@ -33,6 +33,7 @@ public class Main {
 
     public static void main(String[] args) {
         PhoneComparer phoneComparer = new PhoneComparer();
-        phoneComparer.getDiffBetweenPhones(iphone10, iphone15);
+        phoneComparer.getDiffBetweenPhones(iphone15, iphone10);
+        System.out.println(iphone15.compareTo(iphone10));
     }
 }

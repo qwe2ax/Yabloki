@@ -4,6 +4,14 @@ import solutions.solution2.entities.Phone;
 
 public class PhoneComparer {
     public void getDiffBetweenPhones(Phone phone, Phone comprasionPhone) {
+        if (phone.equals(comprasionPhone)) {
+            System.out.println("the same phone is compared, no changes");
+            return;
+        }
+        if (comprasionPhone.compareTo(phone) == -1) {
+            getDiffBetweenPhones(comprasionPhone, phone);
+            return;
+        }
         Phone phone1 = phone.getNextPhone();
         String[] featuresOfCurrentPhone = new String[4];
         featuresOfCurrentPhone[0] = String.valueOf(phone.getPrice());
@@ -26,7 +34,7 @@ public class PhoneComparer {
             for (int i = 0; i < featuresOfCurrentPhone.length; i++) {
                 if (!featuresOfCurrentPhone[i].equals(featuresOfNextPhone[i])) {
                     result.append("- ").append(featuresOfNextPhone[i]).append("\n");
-                    hasChanges = true; // Изменения обнаружены
+                    hasChanges = true;
                 }
             }
             if (!hasChanges) {
@@ -38,5 +46,10 @@ public class PhoneComparer {
         if (!result.isEmpty()) {
             System.out.println(result.toString().trim());
         }
+    }
+
+    public void getDiffBetweenPhonesReverse(Phone phone, Phone comprasionPhone) {
+
+
     }
 }

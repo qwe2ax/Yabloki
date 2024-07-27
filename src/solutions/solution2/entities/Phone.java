@@ -57,9 +57,15 @@ public class Phone {
         return prevPhone;
     }
 
-
     @Override
     public String toString() {
         return "Model: " + model;
     }
+
+    public int compareTo(Phone other) {
+        int thisModelNumber = Integer.parseInt(this.model.replaceAll("\\D+", ""));
+        int otherModelNumber = Integer.parseInt(other.model.replaceAll("\\D+", ""));
+        return Integer.compare(thisModelNumber, otherModelNumber);
+    }
+
 }
