@@ -10,13 +10,51 @@ import solutions.solution2.comparator.PhoneComparer;
 import solutions.solution2.entities.Phone;
 
 public class Main {
-    static Phone iphone10 = new Phone("Iphone 10");
-    static Phone iphone11 = new Phone("Iphone 11", 150, "A13", 6.1, "Night Mode");
-    static Phone iphone12 = new Phone("Iphone 12", 200, iphone10.getCPU(), iphone11.getDisplay(), "5G Support");
-    static Phone iphone13 = new Phone("Iphone 13", 280, "A15", iphone11.getDisplay(), "Improved battery life");
-    static Phone iphone14 = new Phone("Iphone 14", 350, iphone13.getCPU(), iphone11.getDisplay(), "Cinematic mode");
-    static Phone iphone15 = new Phone("Iphone 15", 1500, "A16", iphone11.getDisplay(), "USB-C");
+    private static final Phone iphone10;
+    private static final Phone iphone11;
+    private static final Phone iphone12;
+    private static final Phone iphone13;
+    private static final Phone iphone14;
+    private static final Phone iphone15;
     static {
+        iphone10 = Phone.builder()
+                .model("Iphone 10")
+                .price(100)
+                .cpu("A14")
+                .display(5.8)
+                .feature("Dual-Camera")
+                .build();
+        iphone11 = Phone.builder()
+                .model("Iphone 11")
+                .price(150)
+                .cpu("A13")
+                .display(6.1)
+                .feature("Night Mode")
+                .build();
+        iphone12 = Phone.builder()
+                .model("Iphone 12")
+                .price(200)
+                .cpu("A14")
+                .feature("5G Support")
+                .build();
+        iphone13 = Phone.builder()
+                .model("Iphone 13")
+                .price(280)
+                .cpu("A15")
+                .feature("Improved battery life")
+                .build();
+        iphone14 = Phone.builder()
+                .model("Iphone 14")
+                .price(350)
+                .feature("Cinematic mode")
+                .build();
+        iphone15 = Phone.builder()
+                .model("Iphone 15")
+                .price(1500)
+                .cpu("A16")
+                .feature("USB-C")
+                .build();
+
         iphone10.setPrevPhone(null);
         iphone10.setNextPhone(iphone11);
         iphone11.setPrevPhone(iphone10);
@@ -33,7 +71,7 @@ public class Main {
 
     public static void main(String[] args) {
         PhoneComparer phoneComparer = new PhoneComparer();
-        phoneComparer.getDiffBetweenPhones(iphone15, iphone10);
-        System.out.println(iphone15.compareTo(iphone10));
+        phoneComparer.getDiffBetweenPhones(iphone13, iphone11);
+
     }
 }

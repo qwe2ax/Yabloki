@@ -1,24 +1,20 @@
 package solutions.solution2.entities;
 
 public class Phone {
-    private String model;
-    private double display = 5.8;
-    private int price = 120;
-    private String CPU = "A14";
-    private String feature = "Dual-camera system";
+    private final String model;
+    private final double display;
+    private final int price;
+    private final String cpu;
+    private final String feature;
     private Phone nextPhone;
     private Phone prevPhone;
 
-    public Phone(String model, int price, String CPU, double display, String feature) {
+    public Phone(String model, int price, String cpu, double display, String feature) {
         this.model = model;
-        this.price = price;
-        this.CPU = CPU;
         this.display = display;
+        this.price = price;
+        this.cpu = cpu;
         this.feature = feature;
-    }
-
-    public Phone(String model) {
-        this.model = model;
     }
 
     public void setNextPhone(Phone nextPhone) {
@@ -42,7 +38,7 @@ public class Phone {
     }
 
     public String getCPU() {
-        return CPU;
+        return cpu;
     }
 
     public String getModel() {
@@ -68,4 +64,44 @@ public class Phone {
         return Integer.compare(thisModelNumber, otherModelNumber);
     }
 
+    public static PhoneBuilder builder() {
+        return new PhoneBuilder();
+    }
+
+    public static class PhoneBuilder{
+        private String model;
+        private double display;
+        private int price;
+        private String cpu;
+        private String feature;
+
+        public PhoneBuilder model(String model){
+            this.model = model;
+            return this;
+        }
+
+        public PhoneBuilder display(double display){
+            this.display = display;
+            return this;
+        }
+
+        public PhoneBuilder price(int price){
+            this.price = price;
+            return this;
+        }
+
+        public PhoneBuilder cpu(String cpu){
+            this.cpu = cpu;
+            return this;
+        }
+
+        public PhoneBuilder feature(String feature){
+            this.feature = feature;
+            return this;
+        }
+
+        public Phone build() {
+            return new Phone(model, price, cpu, display, feature);
+        }
+    }
 }
