@@ -1,11 +1,10 @@
-package compare;
+package solutions.solution1.compare;
 
-import enitites.Phone;
+import solutions.solution1.enitites.Phone;
 
-import java.util.Arrays;
 import java.util.HashMap;
 
-public class ComparePhones {
+public class PhoneComparison {
 
     public HashMap<String, Boolean> compareWithNextPhone(Phone phone) {
         HashMap<String, Boolean> difference = new HashMap<>();
@@ -94,28 +93,23 @@ public class ComparePhones {
         String[] featuresOfCurrentPhone = phone.getFeatures();
         StringBuilder[] result = new StringBuilder[featuresOfCurrentPhone.length];
         int j = 0;
-
         for (int i = 0; i < result.length; i++) {
             result[i] = new StringBuilder();
         }
-
         while (!phone1.getModel().equals(comprasionPhone.getModel())) {
             String[] featuresOfNextPhone = phone1.getFeatures();
             result[j].append("New changes in ").append(phone1.getModel()).append(":\n");
 
             for (int i = 0; i < featuresOfCurrentPhone.length; i++) {
-                if (!featuresOfCurrentPhone[i].equals(featuresOfNextPhone[i])) {
-                    result[j].append("- ").append(featuresOfNextPhone[i]).append(i == 6 ? "" : "\n");
+                if (!featuresOfCurrentPhone[i].equals(featuresOfNextPhone[i] )) {
+                    result[j].append("- ").append(featuresOfNextPhone[i]).append(i == phone.getFeatures().length ? "" : "\n");
                 }
             }
-
             j++;
             phone1 = phone1.getNextPhone();
         }
-
         for (int i = 0; i < 5; i++) {
             System.out.println(result[i]);
         }
     }
-
 }

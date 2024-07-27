@@ -1,9 +1,7 @@
-package enitites;
-
-import java.util.Arrays;
+package solutions.solution1.enitites;
 
 public  class Phone {
-    private String model;
+    private final String model;
     private Phone nextPhone;
     private Phone prevPhone;
     private final String[] features;
